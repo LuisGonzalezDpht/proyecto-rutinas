@@ -7,6 +7,11 @@
     "node": "^20.19.0 || >=22.12.0"
   },
   "scripts": {
+    "install:vercel": "bash ./bin/manage-submodules.sh init",
+    "submodules:init": "bash ./bin/manage-submodules.sh init",
+    "submodules:update": "bash ./bin/manage-submodules.sh update",
+    "submodules:status": "bash ./bin/manage-submodules.sh status",
+    "submodules:clean": "bash ./bin/manage-submodules.sh clean",
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
