@@ -13,6 +13,7 @@ declare module 'vue' {
     FooterComponent: typeof import('./src/components/footerComponent.vue')['default']
     HeaderComponent: typeof import('./src/components/headerComponent.vue')['default']
     MarkLoaderComponent: typeof import('./src/components/markLoaderComponent.vue')['default']
+    Message: typeof import('primevue/message')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

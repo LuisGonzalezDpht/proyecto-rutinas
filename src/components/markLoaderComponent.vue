@@ -2,21 +2,15 @@
   <div class="w-full grid justify-center">
     <!-- Estado de carga -->
     <div v-if="isLoading" class="flex items-center justify-center p-8">
-      <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+      <span class="loader"></span>
       <span class="ml-3 text-gray-600">Cargando contenido...</span>
     </div>
-    
+
     <!-- Estado de error -->
-    <div v-else-if="error" class="p-6 bg-red-50 border border-red-200 rounded-lg">
-      <div class="flex items-center">
-        <svg class="w-5 h-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
-        </svg>
-        <h3 class="text-red-800 font-medium">Error al cargar contenido</h3>
-      </div>
-      <p class="text-red-700 mt-2">{{ error }}</p>
-    </div>
-    
+    <Message v-else-if="error" severity="error" icon="pi pi-exclamation-triangle" class="my-10">
+      Error al cargar contenido
+    </Message>
+
     <!-- Contenido markdown -->
     <div v-else class="select-text" v-html="htmlContent"></div>
   </div>
@@ -41,6 +35,26 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /* ==========================================================================
    Estilos para Etiquetas HTML usando CSS Normal con :deep() para v-html
    ========================================================================== */
