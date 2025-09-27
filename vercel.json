@@ -46,5 +46,10 @@
   ],
   "cleanUrls": true,
   "trailingSlash": false,
-  "regions": ["iad1"]
+  "regions": ["iad1"],
+  "build": {
+    "env": {
+      "VERCEL_GIT_SUBMODULES": "1"
+    }
+  }
 }
