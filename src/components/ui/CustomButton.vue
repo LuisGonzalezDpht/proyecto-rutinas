@@ -3,6 +3,7 @@
     :label="props.label"
     :variant="props.variant"
     :size="props.size"
+    :icon="props.icon"
     :severity="props.severity"
     :as-child="props.to !== null"
     v-slot="slotProps"
@@ -32,6 +33,10 @@ const props = defineProps({
   size: {
     type: String,
     default: 'medium',
+  },
+  icon: {
+    type: String,
+    default: undefined,
   },
 })
 </script>

@@ -1,13 +1,5 @@
-<script setup lang="ts">
-import DefaultLayout from './layouts/defaultLayout.vue'
-</script>
-
 <template>
-  <DefaultLayout>
-    <Transition>
-      <RouterView />
-    </Transition>
-  </DefaultLayout>
+  <RouterView />
 </template>
 
 <style>
@@ -29,10 +21,10 @@ import DefaultLayout from './layouts/defaultLayout.vue'
 }
 
 .v-enter-active {
-  transition-delay: 0.05s;
+  transition-delay: 50ms;
 }
 
 .v-leave-active {
-  transition-duration: 0.3s;
+  transition-duration: 250ms;
 }
 </style>
