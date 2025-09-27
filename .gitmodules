@@ -1,0 +1,3 @@
+[submodule "src/assets/routines"]
+	path = src/assets/routines
+	url = https://github.com/LuisGonzalezDpht/rutinas.git
