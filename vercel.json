@@ -7,9 +7,14 @@
   "github": {
     "silent": true
   },
+  "functions": {
+    "app/**": {
+      "runtime": "nodejs22.x"
+    }
+  },
   "buildCommand": "pnpm run build",
   "outputDirectory": "dist",
-  "installCommand": "pnpm run install:vercel && pnpm install",
+  "installCommand": "git submodule update --init --recursive && pnpm install",
   "devCommand": "pnpm run dev",
   "framework": "vite",
   "headers": [
