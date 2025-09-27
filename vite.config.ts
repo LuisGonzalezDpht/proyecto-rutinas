@@ -15,15 +15,10 @@ export default defineConfig({
     vueDevTools(),
     tailwindcss(),
     AutoImport({
-      imports: [
-        'vue',
-        'vue-router',
-        'pinia',
-        '@vueuse/core',
-      ],
-      dts: true, // Genera auto-imports.d.ts
+      imports: ['vue', 'vue-router', 'pinia', '@vueuse/core'],
+      dts: true,
       eslintrc: {
-        enabled: true, // Genera .eslintrc-auto-import.json
+        enabled: true,
       },
     }),
     Components({
