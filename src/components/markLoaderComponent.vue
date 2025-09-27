@@ -12,7 +12,11 @@
     </Message>
 
     <!-- Contenido markdown -->
-    <div v-else class="select-text" v-html="htmlContent"></div>
+    <div
+      v-else
+      class="select-text bg-neutral-100 dark:bg-neutral-900 p-10 rounded-xl drop-shadow-2xl"
+      v-html="htmlContent"
+    ></div>
   </div>
 </template>
 
@@ -227,8 +231,6 @@ onMounted(async () => {
 :deep(blockquote) {
   border-left: 4px solid #3b82f6;
   padding-left: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
   margin-bottom: 1rem;
   background-color: #eff6ff;
   color: #374151;
@@ -246,26 +248,71 @@ onMounted(async () => {
 :deep(table) {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 1rem;
+  margin: 1.5rem 0;
+  background: #f5f5f5;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid #d4d4d8;
 }
 
 :deep(th) {
-  background-color: #f3f4f6;
-  color: #111827;
+  background: #e5e5e5;
+  color: #404040;
   font-weight: 600;
-  padding: 0.75rem;
+  padding: 1rem 1.25rem;
   text-align: left;
-  border: 1px solid #d1d5db;
+  border: none;
+  font-size: 0.875rem;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  position: relative;
+  border-bottom: 1px solid #d4d4d8;
+}
+
+:deep(th:first-child) {
+  border-top-left-radius: 12px;
+}
+
+:deep(th:last-child) {
+  border-top-right-radius: 12px;
 }
 
 :deep(td) {
-  padding: 0.75rem;
-  border: 1px solid #d1d5db;
-  color: #374151;
+  padding: 1rem 1.25rem;
+  border: none;
+  border-bottom: 1px solid #d4d4d8;
+  color: #525252;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  transition: background-color 0.2s ease;
+  background-color: #f5f5f5;
 }
 
-:deep(tr:nth-child(even)) {
-  background-color: #f9fafb;
+:deep(tr:hover td) {
+  background-color: #d4d4d8;
+}
+
+:deep(tr:nth-child(even) td) {
+  background-color: #e5e5e5;
+}
+
+:deep(tr:nth-child(even):hover td) {
+  background-color: #d4d4d8;
+}
+
+:deep(tr:last-child td) {
+  border-bottom: none;
+}
+
+:deep(tr:last-child td:first-child) {
+  border-bottom-left-radius: 12px;
+}
+
+:deep(tr:last-child td:last-child) {
+  border-bottom-right-radius: 12px;
 }
 
 /* Formularios básicos */
@@ -473,19 +520,36 @@ onMounted(async () => {
     border-top-color: #4b5563;
   }
 
+  :deep(table) {
+    background: #1f2937;
+    border: 1px solid #374151;
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.3),
+      0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  }
+
   :deep(th) {
-    background-color: #1f2937;
-    color: #ffffff;
-    border-color: #4b5563;
+    background: #111827;
+    color: #f9fafb;
+    border-bottom: 1px solid #374151;
   }
 
   :deep(td) {
-    border-color: #4b5563;
+    border-bottom: 1px solid #374151;
     color: #d1d5db;
+    background-color: #1f2937;
   }
 
-  :deep(tr:nth-child(even)) {
-    background-color: rgba(31, 41, 55, 0.5);
+  :deep(tr:hover td) {
+    background-color: #374151;
+  }
+
+  :deep(tr:nth-child(even) td) {
+    background-color: #111827;
+  }
+
+  :deep(tr:nth-child(even):hover td) {
+    background-color: #374151;
   }
 
   :deep(input[type='text']),
