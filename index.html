@@ -1,10 +1,81 @@
-<!DOCTYPE html>
-<html lang="">
+<!doctype html>
+<html lang="es">
   <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vite App</title>
+    <!-- Metadatos básicos -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- Título y descripción -->
+    <title>Rutinas - Gestiona y Organiza tus Rutinas Diarias</title>
+    <meta name="description" content="Aplicación web para gestionar y organizar tus rutinas diarias de manera eficiente. Crea, edita y sigue tus hábitos y rutinas personalizadas." />
+    <meta name="keywords" content="rutinas, hábitos, organización, productividad, gestión personal, rutinas diarias, planificación" />
+    <meta name="author" content="Rutinas App" />
+    
+    <!-- Robots y SEO -->
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="language" content="Spanish" />
+    <meta name="revisit-after" content="7 days" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://proyecto-rutinas.vercel.app/" />
+    <meta property="og:title" content="Rutinas - Gestiona y Organiza tus Rutinas Diarias" />
+    <meta property="og:description" content="Aplicación web para gestionar y organizar tus rutinas diarias de manera eficiente. Crea, edita y sigue tus hábitos y rutinas personalizadas." />
+    <meta property="og:image" content="https://proyecto-rutinas.vercel.app/logo.png" />
+    <meta property="og:image:alt" content="Logo de Rutinas App" />
+    <meta property="og:site_name" content="Rutinas" />
+    <meta property="og:locale" content="es_ES" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://proyecto-rutinas.vercel.app/" />
+    <meta property="twitter:title" content="Rutinas - Gestiona y Organiza tus Rutinas Diarias" />
+    <meta property="twitter:description" content="Aplicación web para gestionar y organizar tus rutinas diarias de manera eficiente. Crea, edita y sigue tus hábitos y rutinas personalizadas." />
+    <meta property="twitter:image" content="https://proyecto-rutinas.vercel.app/logo.png" />
+    <meta property="twitter:image:alt" content="Logo de Rutinas App" />
+    
+    <!-- Favicons y iconos -->
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    
+    <!-- Tema y colores -->
+    <meta name="theme-color" content="#1f2937" />
+    <meta name="msapplication-TileColor" content="#1f2937" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    
+    <!-- Preconnect para optimización -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://proyecto-rutinas.vercel.app/" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Rutinas",
+      "description": "Aplicación web para gestionar y organizar tus rutinas diarias de manera eficiente",
+      "url": "https://proyecto-rutinas.vercel.app/",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Rutinas App"
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="app"></div>
