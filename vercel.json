@@ -10,7 +10,6 @@
   "installCommand": "git submodule update --init --recursive && pnpm install",
   "devCommand": "pnpm run dev",
   "framework": "vite",
-  "functions": {},
   "headers": [
     {
       "source": "/assets/(.*)",
