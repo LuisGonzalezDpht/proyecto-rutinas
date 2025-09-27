@@ -50,6 +50,6 @@
   "trailingSlash": false,
   "regions": ["iad1"],
   "env": {
-    "NODE_VERSION": "20"
+    "NODE_VERSION": "22"
   }
 }
