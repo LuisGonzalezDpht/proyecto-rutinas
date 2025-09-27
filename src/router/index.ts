@@ -1,12 +1,6 @@
 import auth from '@/middleware/auth'
+import type { MiddlewareContext } from '@/shared/types/middleware'
 import { createRouter, createWebHistory } from 'vue-router'
-import type { RouteLocationNormalized, NavigationGuardNext } from 'vue-router'
-
-type MiddlewareFunction = (context: {
-  to: RouteLocationNormalized
-  from: RouteLocationNormalized
-  next: NavigationGuardNext
-}) => void
 
 const routes = [
   {
@@ -46,17 +40,23 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const middlewares = to.meta.middlewares as MiddlewareFunction[] | undefined
-  if (!middlewares) return next()
+  const middlewares = to.meta.middlewares as ((ctx: MiddlewareContext) => void)[] | undefined
+  if (!middlewares || middlewares.length === 0) return next()
 
-  // Ejecutar middlewares secuencialmente
   let currentIndex = 0
 
   const runNextMiddleware = () => {
-    if (currentIndex >= middlewares.length) return next()
-
     const middleware = middlewares[currentIndex++]
-    middleware({ to, from, next: runNextMiddleware })
+    if (!middleware) {
+      return next()
+    }
+
+    middleware({
+      to,
+      from,
+      next,
+      nextMiddleware: runNextMiddleware,
+    })
   }
 
   runNextMiddleware()
