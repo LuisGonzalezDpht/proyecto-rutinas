@@ -19,7 +19,7 @@ const markdownContent = ref('')
 
 onMounted(async () => {
   try {
-    const module = await import(`../assets/${props.markdownPath}?raw`)
+    const module = await import(`../assets${props.markdownPath}?raw`)
     markdownContent.value = module.default
   } catch (error) {
     console.error('error cargando markdown:', error)
