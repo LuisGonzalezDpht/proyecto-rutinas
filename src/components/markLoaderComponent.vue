@@ -1,11 +1,29 @@
 <template>
   <div class="w-full grid justify-center">
-    <div class="select-text" v-html="htmlContent"></div>
+    <!-- Estado de carga -->
+    <div v-if="isLoading" class="flex items-center justify-center p-8">
+      <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+      <span class="ml-3 text-gray-600">Cargando contenido...</span>
+    </div>
+    
+    <!-- Estado de error -->
+    <div v-else-if="error" class="p-6 bg-red-50 border border-red-200 rounded-lg">
+      <div class="flex items-center">
+        <svg class="w-5 h-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+        </svg>
+        <h3 class="text-red-800 font-medium">Error al cargar contenido</h3>
+      </div>
+      <p class="text-red-700 mt-2">{{ error }}</p>
+    </div>
+    
+    <!-- Contenido markdown -->
+    <div v-else class="select-text" v-html="htmlContent"></div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { marked } from 'marked'
+import { useMarkdownLoader } from '../composables/useMarkdownLoader'
 
 const props = defineProps({
   markdownPath: {
@@ -15,19 +33,11 @@ const props = defineProps({
   },
 })
 
-const markdownContent = ref('')
+const { htmlContent, isLoading, error, loadMarkdown } = useMarkdownLoader(props.markdownPath)
 
 onMounted(async () => {
-  try {
-    const module = await import(`../assets${props.markdownPath}?raw`)
-    markdownContent.value = module.default
-  } catch (error) {
-    console.error('error cargando markdown:', error)
-    markdownContent.value = 'error cargando markdown'
-  }
+  await loadMarkdown()
 })
-
-const htmlContent = computed(() => marked(markdownContent.value))
 </script>
 
 <style scoped>
