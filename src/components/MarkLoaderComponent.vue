@@ -14,7 +14,7 @@
     <!-- Contenido markdown -->
     <div
       v-else
-      class="select-text bg-neutral-100 lg:dark:bg-neutral-900 dark:bg-neutral-950 lg:p-10 p-5 lg:rounded-xl drop-shadow-2xl transition-all duration-200 ease-in-out"
+      class="select-text bg-neutral-100 lg:dark:bg-neutral-900 dark:bg-neutral-950 lg:p-10 p-5 lg:rounded-lg drop-shadow-2xl transition-all duration-200 ease-in-out"
       v-html="htmlContent"
     ></div>
   </div>

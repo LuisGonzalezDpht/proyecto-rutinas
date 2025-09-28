@@ -1,6 +1,6 @@
 <template>
   <navbar
-    class="bg-neutral-200 dark:bg-neutral-800 lg:my-3 lg:mx-10 m-2 p-1.5 rounded-xl flex justify-between items-center drop-shadow-lg"
+    class="bg-neutral-200 dark:bg-neutral-800 lg:my-3 lg:mx-10 m-2 p-1.5 rounded-lg flex justify-between items-center drop-shadow-lg"
   >
     <ul class="inline-flex !list-none gap-x-1 !mb-0">
       <li v-for="(item, index) in routes" :key="index">
@@ -9,13 +9,21 @@
           :label="item.label"
           :icon="item.icon ? item.icon : ''"
           :severity="item.severity"
+          size="small"
         />
       </li>
     </ul>
+    <div v-if="authStore.isAuthenticated">
+      <CustomButton to="/logout" label="Logout" size="small" severity="danger" />
+    </div>
   </navbar>
 </template>
 
 <script lang="ts" setup>
+import { useAuthStore } from '@/stores/authStore'
+
+const authStore = useAuthStore()
+
 const route = useRoute()
 
 const routes = computed(() => [
