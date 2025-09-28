@@ -17,5 +17,6 @@ declare module 'vue' {
     Message: typeof import('primevue/message')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    WorkoutsOfTheDayComponent: typeof import('./src/components/WorkoutsOfTheDayComponent.vue')['default']
   }
 }
