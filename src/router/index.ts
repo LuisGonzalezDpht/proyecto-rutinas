@@ -1,4 +1,5 @@
 import auth from '@/middleware/auth'
+import logout from '@/middleware/logout'
 import type { MiddlewareContext } from '@/shared/types/middleware'
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -7,6 +8,11 @@ const routes = [
     path: '/',
     name: 'login',
     component: () => import('@/views/LoginView.vue'),
+  },
+  {
+    path: '/logout',
+    meta: { middlewares: [logout, auth] }, // el orden es importante
+    component: () => import('@/views/LogoutView.vue'),
   },
   {
     path: '/',
