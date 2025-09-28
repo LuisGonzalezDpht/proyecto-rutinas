@@ -7,7 +7,7 @@
         <CustomButton
           :to="item.to"
           :label="item.label"
-          :icon="item.icon ? item.icon : ''"
+          :icon="item.icon ? item.icon : undefined"
           :severity="item.severity"
           size="small"
         />

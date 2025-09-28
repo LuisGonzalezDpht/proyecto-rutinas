@@ -1,5 +1,5 @@
 <template>
-  <div>crear rutina</div>
+  <div></div>
 </template>
 
 <script lang="ts" setup></script>
