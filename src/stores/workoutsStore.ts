@@ -1,10 +1,14 @@
 import { isWorkoutToday } from '@/composables/useDateFunctions'
+import type { DAYS } from '@/shared/types/days'
 import type Workout from '@/shared/types/workout'
 
 export const useWorkouts = defineStore('workouts', () => {
   const workouts = ref<Workout[]>([])
   const notWorkingDay = ref(false)
   const isLoading = ref(false)
+
+  const doFake = ref(false)
+  const dayName = ref<DAYS>('LUNES')
 
   async function setWorkouts() {
     try {
@@ -22,12 +26,30 @@ export const useWorkouts = defineStore('workouts', () => {
   }
 
   function getWorkoutsOfTheDay(): { workout: Workout; day: string } {
-    const workout = workouts.value.filter((workout) => isWorkoutToday(workout).is)[0]
+    if (workouts.value.length === 0) {
+      return { workout: {} as Workout, day: '' }
+    }
+
+    const workout = workouts.value.filter(
+      (workout) => isWorkoutToday(workout, doFake.value, dayName.value).is,
+    )[0]
     if (!workout) {
       notWorkingDay.value = true
+      return { workout: {} as Workout, day: '' }
     }
     return { workout, day: isWorkoutToday(workout).day }
   }
 
-  return { workouts, setWorkouts, isLoading, getWorkoutsOfTheDay, notWorkingDay }
+  const working = computed(() => getWorkoutsOfTheDay())
+
+  return {
+    workouts,
+    setWorkouts,
+    isLoading,
+    getWorkoutsOfTheDay,
+    notWorkingDay,
+    working,
+    doFake,
+    dayName,
+  }
 })

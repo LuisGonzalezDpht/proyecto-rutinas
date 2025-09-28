@@ -9,6 +9,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Button: typeof import('primevue/button')['default']
+    Checkbox: typeof import('primevue/checkbox')['default']
     CustomButton: typeof import('./src/components/ui/CustomButton.vue')['default']
     FooterComponent: typeof import('./src/components/FooterComponent.vue')['default']
     HeaderComponent: typeof import('./src/components/HeaderComponent.vue')['default']
