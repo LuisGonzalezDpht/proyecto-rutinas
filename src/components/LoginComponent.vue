@@ -5,7 +5,6 @@
     <h1 class="text-2xl font-bold text-white">Login</h1>
     <p v-if="!authStore.isAuthenticated">actualmente no se puede loguear</p>
     <p v-else>
-      actualmente se puede loguear,
       <CustomButton to="/home" label="Ir a home" size="small" severity="contrast" />
     </p>
   </div>
