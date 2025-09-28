@@ -7,6 +7,8 @@ import tailwindcss from '@tailwindcss/vite'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { PrimeVueResolver } from 'unplugin-vue-components/resolvers'
+import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -22,7 +24,16 @@ export default defineConfig({
       },
     }),
     Components({
-      resolvers: [PrimeVueResolver()],
+      resolvers: [
+        PrimeVueResolver(),
+        IconsResolver({
+          prefix: '',
+          enabledCollections: ['heroicons-outline'],
+        }),
+      ],
+    }),
+    Icons({
+      autoInstall: true,
     }),
   ],
   resolve: {

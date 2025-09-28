@@ -1,26 +1,38 @@
 <template>
   <navbar
-    class="bg-neutral-200 dark:bg-neutral-800 lg:my-3 lg:mx-10 m-2 p-1.5 rounded-lg flex justify-between items-center drop-shadow-lg"
+    class="bg-neutral-200 dark:bg-neutral-800 md:my-3 md:mx-10 m-2 p-1.5 rounded-lg flex justify-between items-center drop-shadow-lg overflow-auto"
   >
-    <ul class="inline-flex !list-none gap-x-1 !mb-0">
+    <ul class="inline-flex !list-none md:gap-x-1 whitespace-nowrap">
       <li v-for="(item, index) in routes" :key="index">
         <CustomButton
           :to="item.to"
           :label="item.label"
-          :icon="item.icon ? item.icon : undefined"
+          :iconComponent="item.iconComponent"
           :severity="item.severity"
           size="small"
         />
       </li>
     </ul>
     <div v-if="authStore.isAuthenticated">
-      <CustomButton to="/logout" label="Logout" size="small" severity="danger" />
+      <CustomButton
+        to="/logout"
+        :iconComponent="ArrowLeftStartOnRectangleIcon"
+        label="Logout"
+        size="small"
+        severity="danger"
+      />
     </div>
   </navbar>
 </template>
 
 <script lang="ts" setup>
 import { useAuthStore } from '@/stores/authStore'
+import {
+  ArrowLeftStartOnRectangleIcon,
+  DocumentIcon,
+  HomeIcon,
+  PlusIcon,
+} from '@heroicons/vue/24/solid'
 
 const authStore = useAuthStore()
 
@@ -30,21 +42,21 @@ const routes = computed(() => [
   {
     to: '/home',
     label: 'Home',
-    icon: undefined,
+    iconComponent: HomeIcon,
     variant: 'link',
     severity: '/home' === route.path ? 'contrast' : 'secondary',
   },
   {
     to: '/rutinas',
     label: 'Lista rutinas',
-    icon: 'pi pi-file',
+    iconComponent: DocumentIcon,
     variant: 'link',
     severity: '/rutinas' === route.path ? 'contrast' : 'secondary',
   },
   {
     to: '/rutinas/crear',
     label: 'Crear rutina',
-    icon: undefined,
+    iconComponent: PlusIcon,
     variant: 'link',
     severity: '/rutinas/crear' === route.path ? 'contrast' : 'secondary',
   },

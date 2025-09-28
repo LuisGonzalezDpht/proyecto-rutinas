@@ -12,6 +12,7 @@ declare module 'vue' {
     CustomButton: typeof import('./src/components/ui/CustomButton.vue')['default']
     FooterComponent: typeof import('./src/components/FooterComponent.vue')['default']
     HeaderComponent: typeof import('./src/components/HeaderComponent.vue')['default']
+    HomeActionsComponent: typeof import('./src/components/HomeActionsComponent.vue')['default']
     LoginComponent: typeof import('./src/components/LoginComponent.vue')['default']
     MarkLoaderComponent: typeof import('./src/components/MarkLoaderComponent.vue')['default']
     Message: typeof import('primevue/message')['default']

@@ -6,7 +6,7 @@ export function getToday(): string {
 
 export function getDayByName(string: string) {
   const days = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo']
-  return days.indexOf(string.toLowerCase()) + 1
+  return days.indexOf(string.toLowerCase()) + 2
 }
 
 export function compareToday(day: number) {
@@ -14,7 +14,7 @@ export function compareToday(day: number) {
   return day === today
 }
 
-export function isWorkoutToday(workout: Workout) {
+export function isWorkoutToday(workout: Workout): { is: boolean; day: string } {
   const day = getDayByName(workout.dia)
-  return compareToday(day)
+  return { is: compareToday(day), day: workout.dia }
 }

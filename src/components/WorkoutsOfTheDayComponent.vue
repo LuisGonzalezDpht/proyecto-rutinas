@@ -1,21 +1,36 @@
 <template>
-  <div
-    class="max-w-3xl w-full bg-neutral-100 lg:dark:bg-neutral-900 dark:bg-neutral-950 lg:p-10 p-5 lg:rounded-lg drop-shadow-2xl transition-all duration-200 ease-in-out"
-  >
-    <ul>
-      <li v-for="(exercise, index) in workoutOfTheDay" :key="index">{{ exercise.nombre }}</li>
-    </ul>
+  <div>
+    <template v-if="workoutOfTheDay.length > 0">
+      <ul>
+        <li v-for="(exercise, index) in workoutOfTheDay" :key="index">{{ exercise.nombre }}</li>
+      </ul>
+    </template>
+    <template v-else>
+      <p class="text-center text-gray-500">No hay ejercicios para hoy ({{ day }})</p>
+    </template>
   </div>
 </template>
 
 <script lang="ts" setup>
+import type { Grupo } from '@/shared/types/workout'
 import { useWorkouts } from '@/stores/workoutsStore'
 
 const workoutsStore = useWorkouts()
 
-const workoutOfTheDay = computed(() => workoutsStore.getWorkoutsOfTheDay().grupo)
+const day = ref(workoutsStore.getWorkoutsOfTheDay().day || '')
 
-onBeforeMount(() => {
-  workoutsStore.setWorkouts()
+const workoutOfTheDay = computed(() => {
+  if (workoutsStore.notWorkingDay) {
+    return [] as Grupo[]
+  }
+
+  if (workoutsStore.getWorkoutsOfTheDay() && workoutsStore.getWorkoutsOfTheDay().workout.grupo) {
+    return workoutsStore.getWorkoutsOfTheDay().workout.grupo
+  }
+  return [] as Grupo[]
+})
+
+onBeforeMount(async () => {
+  await workoutsStore.setWorkouts()
 })
 </script>

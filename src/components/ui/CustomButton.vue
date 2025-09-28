@@ -8,7 +8,10 @@
     :as-child="props.to !== null"
     v-slot="slotProps"
   >
-    <RouterLink :to="props.to" :class="slotProps.class">{{ props.label }}</RouterLink>
+    <RouterLink :to="props.to" :class="slotProps.class">
+      <component v-if="props.iconComponent" :is="props.iconComponent" class="w-5" />
+      <span :class="{ 'md:block hidden': props.iconComponent }">{{ props.label }}</span>
+    </RouterLink>
   </Button>
 </template>
 
@@ -36,6 +39,10 @@ const props = defineProps({
   },
   icon: {
     type: String,
+    default: undefined,
+  },
+  iconComponent: {
+    type: Object,
     default: undefined,
   },
 })
