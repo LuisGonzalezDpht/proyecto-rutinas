@@ -3,6 +3,7 @@
     :label="props.label"
     :variant="props.variant"
     :size="props.size"
+    :disabled="props.disabled"
     :icon="props.icon"
     :severity="props.severity"
     :as-child="props.to !== null"
@@ -44,6 +45,10 @@ const props = defineProps({
   iconComponent: {
     type: Object,
     default: undefined,
+  },
+  disabled: {
+    type: Boolean,
+    default: false,
   },
 })
 </script>
