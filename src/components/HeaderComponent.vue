@@ -10,6 +10,7 @@
           :iconComponent="item.iconComponent"
           :severity="item.severity"
           size="small"
+          v-if="item.if"
         />
       </li>
     </ul>
@@ -43,6 +44,7 @@ const routes = computed(() => [
     to: '/home',
     label: 'Home',
     iconComponent: HomeIcon,
+    if: true,
     variant: 'link',
     severity: '/home' === route.path ? 'contrast' : 'secondary',
   },
@@ -50,6 +52,7 @@ const routes = computed(() => [
     to: '/rutinas',
     label: 'Lista rutinas',
     iconComponent: DocumentIcon,
+    if: authStore.getDefaultUsers(),
     variant: 'link',
     severity: '/rutinas' === route.path ? 'contrast' : 'secondary',
   },
@@ -57,6 +60,7 @@ const routes = computed(() => [
     to: '/rutinas/crear',
     label: 'Crear rutina',
     iconComponent: PlusIcon,
+    if: true,
     variant: 'link',
     severity: '/rutinas/crear' === route.path ? 'contrast' : 'secondary',
   },
