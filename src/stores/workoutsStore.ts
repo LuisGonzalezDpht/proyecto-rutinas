@@ -40,15 +40,12 @@ export const useWorkouts = defineStore('workouts', () => {
     return { workout, day: isWorkoutToday(workout).day }
   }
 
-  const working = computed(() => getWorkoutsOfTheDay())
-
   return {
     workouts,
     setWorkouts,
     isLoading,
     getWorkoutsOfTheDay,
     notWorkingDay,
-    working,
     doFake,
     dayName,
   }

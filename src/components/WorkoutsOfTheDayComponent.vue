@@ -42,17 +42,26 @@ import { getToday } from '@/composables/useDateFunctions'
 const workoutsStore = useWorkouts()
 
 const day = computed(() => {
-  const workoutDay = workoutsStore.working.day
+  // Forzar reactividad observando doFake y dayName
+  void workoutsStore.doFake
+  void workoutsStore.dayName
+
+  const workoutDay = workoutsStore.getWorkoutsOfTheDay().day
   return workoutDay || getToday()
 })
 
 const workoutOfTheDay = computed(() => {
+  // Forzar reactividad observando doFake y dayName
+  void workoutsStore.doFake
+  void workoutsStore.dayName
+
   if (workoutsStore.notWorkingDay) {
     return [] as Grupo[]
   }
 
-  if (workoutsStore.working && workoutsStore.working.workout.grupo) {
-    return workoutsStore.working.workout.grupo
+  const workoutData = workoutsStore.getWorkoutsOfTheDay()
+  if (workoutData && workoutData.workout.grupo) {
+    return workoutData.workout.grupo
   }
   return [] as Grupo[]
 })
@@ -77,12 +86,13 @@ function returnSeries(exercise: Ejercicio): string {
 }
 
 watch(
-  () => workoutsStore.doFake,
-  async (newValue) => {
-    if (newValue) {
-      await workoutsStore.setWorkouts()
-    }
+  [() => workoutsStore.doFake, () => workoutsStore.dayName],
+  async () => {
+    // Resetear el estado cuando cambian los valores
+    workoutsStore.notWorkingDay = false
+    await workoutsStore.setWorkouts()
   },
+  { immediate: false },
 )
 
 onBeforeMount(async () => {

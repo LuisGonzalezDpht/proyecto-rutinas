@@ -1,1 +1,2 @@
 export type DAYS = 'LUNES' | 'MARTES' | 'MIERCOLES' | 'JUEVES' | 'VIERNES' | 'SABADO' | 'DOMINGO'
+export type DAYS_WITH_ACTUAL = 'ACTUAL' | DAYS
