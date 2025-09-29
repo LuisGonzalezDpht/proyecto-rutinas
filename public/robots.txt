@@ -1,26 +1,30 @@
+# Bloquear todos los motores de búsqueda
 User-agent: *
-Allow: /
+Disallow: /
 
-# Sitemap
-Sitemap: https://proyecto-rutinas.vercel.app/sitemap.xml
+# Bloquear específicamente los principales bots
+User-agent: Googlebot
+Disallow: /
 
-# Crawl-delay for respectful crawling
-Crawl-delay: 1
+User-agent: Bingbot
+Disallow: /
 
-# Disallow sensitive areas (if any)
-# Disallow: /admin/
-# Disallow: /api/private/
+User-agent: Slurp
+Disallow: /
 
-# Allow common assets
-Allow: /assets/
-Allow: /css/
-Allow: /js/
-Allow: /images/
-Allow: /*.css$
-Allow: /*.js$
-Allow: /*.png$
-Allow: /*.jpg$
-Allow: /*.jpeg$
-Allow: /*.gif$
-Allow: /*.svg$
-Allow: /*.webp$
+User-agent: DuckDuckBot
+Disallow: /
+
+User-agent: Baiduspider
+Disallow: /
+
+User-agent: YandexBot
+Disallow: /
+
+User-agent: facebookexternalhit
+Disallow: /
+
+User-agent: Twitterbot
+Disallow: /
+
+# No sitemap disponible

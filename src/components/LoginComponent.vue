@@ -23,11 +23,10 @@ import { useAuthStore } from '@/stores/authStore'
 import CustomButton from './ui/CustomButton.vue'
 
 const authStore = useAuthStore()
-const route = useRoute()
 
 onBeforeMount(() => {
-  if (route.query.isAuthenticated === 'true') {
-    authStore.isAuthenticated = true
+  if (authStore.isAuthenticated) {
+    location.href = '/home'
   }
 })
 </script>

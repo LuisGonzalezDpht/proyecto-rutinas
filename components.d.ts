@@ -17,6 +17,7 @@ declare module 'vue' {
     InputText: typeof import('primevue/inputtext')['default']
     LoginComponent: typeof import('./src/components/LoginComponent.vue')['default']
     MarkLoaderComponent: typeof import('./src/components/MarkLoaderComponent.vue')['default']
+    Message: typeof import('primevue/message')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     WorkoutsOfTheDayComponent: typeof import('./src/components/WorkoutsOfTheDayComponent.vue')['default']

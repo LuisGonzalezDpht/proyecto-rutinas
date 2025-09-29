@@ -1,8 +1,9 @@
-import { useAuthStore } from "@/stores/authStore"
+import { useAuthStore } from '@/stores/authStore'
 import type { MiddlewareContext } from '@/shared/types/middleware'
 
 export default function auth({ next }: MiddlewareContext) {
   const authStore = useAuthStore()
   if (!authStore.isAuthenticated) return next({ name: 'login' })
+  if (next.name === 'login' && authStore.isAuthenticated) return next({ name: 'home' })
   next()
 }
