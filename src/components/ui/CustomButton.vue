@@ -1,6 +1,6 @@
 <template>
   <Button
-    :label="props.label"
+    :label="props.to ? undefined : props.label"
     :variant="props.variant"
     :size="props.size"
     :disabled="props.disabled"
@@ -9,10 +9,14 @@
     :as-child="props.to !== null"
     v-slot="slotProps"
   >
-    <RouterLink :to="props.to" :class="slotProps.class">
+    <RouterLink v-if="props.to" :to="props.to" :class="slotProps.class">
       <component v-if="props.iconComponent" :is="props.iconComponent" class="w-5" />
       <span :class="{ 'md:block hidden': props.iconComponent }">{{ props.label }}</span>
     </RouterLink>
+    <template v-else>
+      <component v-if="props.iconComponent" :is="props.iconComponent" class="w-5" />
+      <span v-if="props.label" :class="{ 'md:block hidden': props.iconComponent }">{{ props.label }}</span>
+    </template>
   </Button>
 </template>
 
